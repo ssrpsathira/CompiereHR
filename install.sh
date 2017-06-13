@@ -16,3 +16,4 @@ sudo apt-get -y install mysql-server
 # Setup app environment
 php bin/console server:start 0.0.0.0:8000
 php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force

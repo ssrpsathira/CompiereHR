@@ -11,6 +11,7 @@ ArticleBundle\Entity\Article:
             length: 255
         url:
             type: string
+            length: 191
             unique: true
         content:
             type: text
