@@ -2,3 +2,8 @@ author_list:
     path: /authors
     defaults: { _controller: AuthorBundle:Author:list }
     methods: [GET]
+
+author_add:
+    path: /authors
+    defaults: { _controller: AuthorBundle:Author:add }
+    methods: [POST]
