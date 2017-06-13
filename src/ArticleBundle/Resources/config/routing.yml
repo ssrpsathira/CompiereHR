@@ -1,0 +1,4 @@
+article_list:
+    path: /articles
+    defaults: { _controller: ArticleBundle:Article:list }
+    methods: [GET]

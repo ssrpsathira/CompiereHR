@@ -1,0 +1,32 @@
+ArticleBundle\Entity\Article:
+    type: entity
+    table: article
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 255
+        url:
+            type: string
+            unique: true
+        content:
+            type: text
+        createdAt:
+            type: datetime
+            nullable: false
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            nullable: false
+            gedmo:
+                timestampable:
+                    on: update
+    manyToMany:
+        authors:
+            targetEntity: AuthorBundle\Entity\Author
+            mappedBy: articles

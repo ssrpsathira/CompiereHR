@@ -1,0 +1,27 @@
+AuthorBundle\Entity\Author:
+    type: entity
+    table: author
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+    manyToMany:
+        articles:
+            targetEntity: ArticleBundle\Entity\Article
+            inversedBy: authors
+            joinTable:
+                name: authorArticle
+                joinColumns:
+                    authorId:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    articleId:
+                        referencedColumnName: id
+                        unique: true
+            cascade:
+                [ "persist", "remove" ]
+            orphanRemoval: true
