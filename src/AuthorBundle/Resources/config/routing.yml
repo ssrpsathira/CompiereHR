@@ -1,0 +1,4 @@
+author_list:
+    path: /authors
+    defaults: { _controller: AuthorBundle:Author:list }
+    methods: [GET]
