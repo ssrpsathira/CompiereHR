@@ -1,6 +1,6 @@
 <?php
 
-namespace Click\ArticleBundle\Entity;
+namespace ArticleBundle\Entity;
 
 class Article
 {

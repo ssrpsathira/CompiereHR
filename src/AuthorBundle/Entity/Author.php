@@ -1,6 +1,6 @@
 <?php
 
-namespace Click\AuthorBundle\Entity;
+namespace AuthorBundle\Entity;
 
 class Author
 {
