@@ -1,0 +1,21 @@
+<?php
+
+namespace ArticleBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
+class Article
+{
+    private $id;
+    private $title;
+    private $url;
+    private $content;
+    private $createdAt;
+    private $updatedAt;
+    private $authors;
+
+    public function __construct()
+    {
+        $this->authors = new ArrayCollection();
+    }
+}

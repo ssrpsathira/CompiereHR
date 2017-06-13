@@ -1,0 +1,17 @@
+<?php
+
+namespace AuthorBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
+class Author
+{
+    private $id;
+    private $name;
+    private $articles;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
+}
