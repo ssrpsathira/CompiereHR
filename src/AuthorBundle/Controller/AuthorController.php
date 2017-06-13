@@ -1,10 +1,13 @@
 <?php
 
 namespace AuthorBundle\Controller;
+
 use AuthorBundle\Entity\Author;
-use AuthrBundle\Form\Type\AuthorType;
+use AuthorBundle\Form\Handler\AuthorFormHandler;
+use AuthorBundle\Form\Type\AuthorType;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Created by PhpStorm.
@@ -14,14 +17,26 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AuthorController extends FOSRestController
 {
-    public function listAction()
-    {
-
-    }
-
     public function addAction(Request $request)
     {
         $author = new Author();
+
         $form = $this->createForm(AuthorType::class, $author);
+        $formHandler = new AuthorFormHandler($form, $request, $author);
+
+        if ($formHandler->process()) {
+            $em = $this->get('doctrine.orm.entity_manager');
+            $em->persist($author);
+            $em->flush();
+
+            return Response::HTTP_CREATED;
+        }
+
+        $data = array(
+            'author' => $author,
+            'form' => $form,
+        );
+
+        return $this->view($data);
     }
 }

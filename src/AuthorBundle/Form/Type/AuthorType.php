@@ -1,14 +1,14 @@
 <?php
 
-namespace AuthrBundle\Form\Type;
+namespace AuthorBundle\Form\Type;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AuthorType
+class AuthorType extends AbstractType
 {
-
-    public function buildForm(FormBuilderInterface $builder)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
             'name',
