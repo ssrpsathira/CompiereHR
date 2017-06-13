@@ -29,14 +29,9 @@ class AuthorController extends FOSRestController
             $em->persist($author);
             $em->flush();
 
-            return Response::HTTP_CREATED;
+            return new Response('',Response::HTTP_CREATED);
         }
 
-        $data = array(
-            'author' => $author,
-            'form' => $form,
-        );
-
-        return $this->view($data);
+        return new Response('Invalid parameters', Response::HTTP_BAD_REQUEST);
     }
 }

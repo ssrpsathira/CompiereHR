@@ -1,0 +1,5 @@
+AuthorBundle\Entity\Author:
+    properties:
+        name:
+            - NotBlank: { message: field.blank }
+            - Length: { max: 255, maxMessage: field.too_long }
