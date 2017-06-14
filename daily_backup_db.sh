@@ -8,7 +8,7 @@ db_name="pet_stock"
 
 # Other options
 backup_path="/opt/backups/database"
-date=$(date +"%d-%b-%Y")
+date=$(date +"%d-%b-%Y_%H-%M-%S")
 
 # Set default file permissions
 umask 177
