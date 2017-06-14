@@ -1,0 +1,8 @@
+{
+    [
+        {% for article in articles %}
+            {% include 'ArticleBundle:Article:view.json_v1.twig' with { 'article': article } %}{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+
+}

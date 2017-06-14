@@ -6,6 +6,7 @@ use ArticleBundle\Entity\Article;
 use ArticleBundle\Form\Handler\ArticleFormHandler;
 use ArticleBundle\Form\Type\ArticleType;
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -19,7 +20,18 @@ class ArticleController extends FOSRestController
 {
     public function listAction()
     {
+        $em = $this->get('doctrine.orm.entity_manager');
+        $articles = $em->getRepository('ArticleBundle:Article')->findAll();
+        $content = $this->renderView('ArticleBundle:Article:list.json_v1.twig', array('articles' => $articles));
 
+        return new Response($content, Response::HTTP_OK);
+    }
+
+    public function viewAction(Article $article)
+    {
+        $content = $this->renderView('ArticleBundle:Article:view.json_v1.twig', array('article' => $article));
+
+        return new Response($content, Response::HTTP_OK);
     }
 
     public function addAction(Request $request)
@@ -41,7 +53,10 @@ class ArticleController extends FOSRestController
                 return new Response('Author not found', Response::HTTP_NOT_FOUND);
             }
 
-            $article->setAuthors($authors);
+            foreach ($authors as $author) {
+                $author->addArticle($article);
+                $em->persist($author);
+            }
 
             $em->persist($article);
             $em->flush();

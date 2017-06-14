@@ -3,6 +3,13 @@ article_list:
     defaults: { _controller: ArticleBundle:Article:list }
     methods: [GET]
 
+article_view:
+    path: /articles/{article}
+    defaults: { _controller: ArticleBundle:Article:view }
+    methods: [GET]
+    requirements:
+        article: \d+
+
 article_add:
     path: /articles
     defaults: { _controller: ArticleBundle:Article:add }
