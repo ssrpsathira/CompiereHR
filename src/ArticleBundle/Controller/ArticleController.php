@@ -36,14 +36,28 @@ class ArticleController extends FOSRestController
 
     public function addAction(Request $request)
     {
-        $article = new Article();
+        return $this->addEditAction($request);
+    }
+
+    public function editAction(Request $request, Article $article)
+    {
+        return $this->addEditAction($request, $article);
+    }
+
+    private function addEditAction(Request $request, Article $article = null){
+
+        $action = 'edit';
+
+        if(!$article){
+            $article = new Article();
+            $action = 'add';
+        }
 
         $form = $this->createForm(ArticleType::class, $article);
         $formHandler = new ArticleFormHandler($form, $request, $article);
 
         $authors = $request->request->get('authors');
         $request->request->remove('authors');
-
         if ($formHandler->process()) {
             $em = $this->get('doctrine.orm.entity_manager');
 
@@ -53,15 +67,16 @@ class ArticleController extends FOSRestController
                 return new Response('Author not found', Response::HTTP_NOT_FOUND);
             }
 
-            foreach ($authors as $author) {
-                $author->addArticle($article);
-                $em->persist($author);
-            }
+            $article->setAuthors($authors);
 
             $em->persist($article);
             $em->flush();
 
-            return new Response('', Response::HTTP_CREATED);
+            if($action == 'add'){
+                return new Response('Successfull created article', Response::HTTP_CREATED);
+            }else{
+                return new Response('Successfully updated article', Response::HTTP_OK);
+            }
         }
 
         return new Response('Invalid parameters', Response::HTTP_BAD_REQUEST);

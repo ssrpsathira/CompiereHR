@@ -14,3 +14,10 @@ article_add:
     path: /articles
     defaults: { _controller: ArticleBundle:Article:add }
     methods: [POST]
+
+article_edit:
+    path: /articles/{article}
+    defaults: { _controller: ArticleBundle:Article:edit }
+    methods: [PUT]
+    requirements:
+        article: \d+

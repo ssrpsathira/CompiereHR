@@ -175,6 +175,14 @@ class Article
     }
 
     /**
+     * Remove all authors
+     */
+    public function removeAuthors()
+    {
+        $this->authors->clear();
+    }
+
+    /**
      * Get authors
      *
      * @return \Doctrine\Common\Collections\Collection

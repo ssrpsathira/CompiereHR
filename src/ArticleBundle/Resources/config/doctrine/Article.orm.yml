@@ -34,4 +34,12 @@ ArticleBundle\Entity\Article:
     manyToMany:
         authors:
             targetEntity: AuthorBundle\Entity\Author
-            mappedBy: articles
+            inversedBy: articles
+            joinTable:
+                name: articleAuthor
+                joinColumns:
+                    articleId:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    authorId:
+                        referencedColumnName: id
