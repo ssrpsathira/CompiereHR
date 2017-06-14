@@ -21,3 +21,10 @@ article_edit:
     methods: [PUT]
     requirements:
         article: \d+
+
+article_delete:
+    path: /articles/{article}
+    defaults: { _controller: ArticleBundle:Article:delete }
+    methods: [DELETE]
+    requirements:
+        article: \d+

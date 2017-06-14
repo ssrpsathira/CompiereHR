@@ -44,11 +44,12 @@ class ArticleController extends FOSRestController
         return $this->addEditAction($request, $article);
     }
 
-    private function addEditAction(Request $request, Article $article = null){
+    private function addEditAction(Request $request, Article $article = null)
+    {
 
         $action = 'edit';
 
-        if(!$article){
+        if (!$article) {
             $article = new Article();
             $action = 'add';
         }
@@ -72,13 +73,23 @@ class ArticleController extends FOSRestController
             $em->persist($article);
             $em->flush();
 
-            if($action == 'add'){
+            if ($action == 'add') {
                 return new Response('Successfull created article', Response::HTTP_CREATED);
-            }else{
+            } else {
                 return new Response('Successfully updated article', Response::HTTP_OK);
             }
         }
 
         return new Response('Invalid parameters', Response::HTTP_BAD_REQUEST);
+    }
+
+    public function deleteAction(Article $article)
+    {
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $em->remove($article);
+        $em->flush();
+
+        return new Response('', Response::HTTP_NO_CONTENT);
     }
 }
