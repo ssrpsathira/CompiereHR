@@ -1,5 +1,6 @@
 ArticleBundle\Entity\Article:
     type: entity
+    repositoryClass: ArticleBundle\Entity\Repository\ArticleRepository
     table: article
     id:
         id:

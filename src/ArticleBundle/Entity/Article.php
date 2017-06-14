@@ -183,4 +183,12 @@ class Article
     {
         return $this->authors;
     }
+
+    /**
+     * @param ArrayCollection $authors
+     */
+    public function setAuthors($authors)
+    {
+        $this->authors = $authors;
+    }
 }

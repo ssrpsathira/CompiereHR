@@ -2,3 +2,8 @@ article_list:
     path: /articles
     defaults: { _controller: ArticleBundle:Article:list }
     methods: [GET]
+
+article_add:
+    path: /articles
+    defaults: { _controller: ArticleBundle:Article:add }
+    methods: [POST]
