@@ -149,7 +149,7 @@ None
     });
   ```
   
-  **Update Article**
+**Update Article**
 ----
   Updates an existing Article.
 
@@ -192,7 +192,7 @@ None
     }
   ```
   
-  **Delete Article**
+**Delete Article**
 ----
   Deletes a single article.
 
