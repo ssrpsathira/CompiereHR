@@ -1,5 +1,12 @@
 ArticleBundle\Entity\Article:
     properties:
         title:
-            - NotBlank: { message: field.blank }
-            - Length: { max: 255, maxMessage: field.too_long }
+            - Length: { max: 255, maxMessage: Title is too long }
+        url:
+            - Url:
+                message: The url "{{ value }}" is not a valid url
+            - Length: { max: 191, maxMessage: URL length is too long }
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [url]
+            message: The URL is already in the system

@@ -1,6 +1,7 @@
 <?php
 
 namespace ArticleBundle\Controller;
+
 use ArticleBundle\Entity\Article;
 use ArticleBundle\Form\Handler\ArticleFormHandler;
 use ArticleBundle\Form\Type\ArticleType;
@@ -35,12 +36,17 @@ class ArticleController extends FOSRestController
             $em = $this->get('doctrine.orm.entity_manager');
 
             $authors = $em->getRepository('AuthorBundle:Author')->findById($authors);
+
+            if (count($authors) == 0) {
+                return new Response('Author not found', Response::HTTP_NOT_FOUND);
+            }
+
             $article->setAuthors($authors);
 
             $em->persist($article);
             $em->flush();
 
-            return new Response('',Response::HTTP_CREATED);
+            return new Response('', Response::HTTP_CREATED);
         }
 
         return new Response('Invalid parameters', Response::HTTP_BAD_REQUEST);

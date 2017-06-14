@@ -10,12 +10,15 @@ ArticleBundle\Entity\Article:
         title:
             type: string
             length: 255
+            nullable: true
         url:
             type: string
             length: 191
             unique: true
+            nullable: true
         content:
             type: text
+            nullable: true
         createdAt:
             type: datetime
             nullable: false
