@@ -6,4 +6,4 @@ Installation
 API Documentation
 =================
 
-Please find the documentation here.
+Please find the documentation [here](https://github.com/ssrpsathira/PetStock/blob/master/APIdocs.md).
