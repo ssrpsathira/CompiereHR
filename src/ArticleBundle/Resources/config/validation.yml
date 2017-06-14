@@ -1,0 +1,5 @@
+ArticleBundle\Entity\Article:
+    properties:
+        title:
+            - NotBlank: { message: field.blank }
+            - Length: { max: 255, maxMessage: field.too_long }

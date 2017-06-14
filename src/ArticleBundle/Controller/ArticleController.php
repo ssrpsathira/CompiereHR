@@ -42,7 +42,7 @@ class ArticleController extends FOSRestController
 
             return new Response('',Response::HTTP_CREATED);
         }
-var_dump($form->getErrors()->current()->getCause());die;
+
         return new Response('Invalid parameters', Response::HTTP_BAD_REQUEST);
     }
 }
