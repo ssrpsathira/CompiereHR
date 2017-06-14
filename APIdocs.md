@@ -1,3 +1,36 @@
+**Create Author**
+----
+  Creates a new Author.
+
+* **URL**
+
+  /authors
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+   **Required:**
+  name
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `Successfully created author`
+ 
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST<br />
+    **Content:** `Invalid parameters`
+
+* **Sample request body:**
+
+  ```javascript
+    {
+      "name":"George RR Martin"
+     }
+  ```
 **Show User**
 ----
   Returns json data about a single user.
