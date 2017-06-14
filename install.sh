@@ -18,3 +18,11 @@ php bin/console server:start 0.0.0.0:8000
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
 php composer.phar install
+
+# Setup backup db location
+cd /opt
+sudo mkdir backups
+cd backups
+sudo mkdir database
+cd database
+sudo chmod 777 ./
