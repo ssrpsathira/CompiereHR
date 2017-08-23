@@ -13,11 +13,19 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+
             new JMS\SerializerBundle\JMSSerializerBundle(),
+
             new FOS\RestBundle\FOSRestBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+
+            // CompiereHR bundles
             new BaseBundle\BaseBundle(),
             new AuthorBundle\AuthorBundle(),
             new ArticleBundle\ArticleBundle()
