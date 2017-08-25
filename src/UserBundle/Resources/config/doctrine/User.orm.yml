@@ -1,0 +1,9 @@
+UserBundle\Entity\User:
+    type: entity
+    repositoryClass: UserBundle\Entity\Repository\UserRepository
+    table: user_hr
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
