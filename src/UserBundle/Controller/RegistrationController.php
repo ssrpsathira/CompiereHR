@@ -2,17 +2,13 @@
 
 namespace UserBundle\Controller;
 
-use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\FOSUserEvents;
-use Symfony\Component\Form\FormInterface;
-use JMS\Serializer\SerializationContext;
 
-class RegistrationController extends BaseController
+class RegistrationController extends BaseUserController
 {
     public function registerAction(Request $request)
     {
@@ -43,54 +39,11 @@ class RegistrationController extends BaseController
 
             $userManager->updateUser($user);
 
-            $response = new Response($this->serialize('User created.'), Response::HTTP_CREATED);
+            $response = $this->createResponse('User created.', Response::HTTP_CREATED);
+        } else {
+            $response = $this->createResponse($form->getErrors(true), Response::HTTP_BAD_REQUEST);
         }
 
         return $this->setBaseHeaders($response);
-    }
-
-    /**
-     * @param  Request $request
-     * @param  FormInterface $form
-     */
-    private function processForm(Request $request, FormInterface $form)
-    {
-        $data = json_decode($request->getContent(), true);
-        if ($data === null) {
-            throw new BadRequestHttpException();
-        }
-
-        $form->submit($data);
-    }
-
-    /**
-     * Data serializing via JMS serializer.
-     *
-     * @param mixed $data
-     *
-     * @return string JSON string
-     */
-    private function serialize($data)
-    {
-        $context = new SerializationContext();
-        $context->setSerializeNull(true);
-
-        return $this->get('jms_serializer')
-            ->serialize($data, 'json', $context);
-    }
-
-    /**
-     * Set base HTTP headers.
-     *
-     * @param Response $response
-     *
-     * @return Response
-     */
-    private function setBaseHeaders(Response $response)
-    {
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-
-        return $response;
     }
 }
