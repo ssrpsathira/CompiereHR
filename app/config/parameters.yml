@@ -2,7 +2,7 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: compiere_hr
+    database_name: compiereHr
     database_user: root
     database_password: password
     mailer_transport: smtp
