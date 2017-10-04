@@ -22,33 +22,18 @@ services:
         # but if a service is unused, it's removed anyway
         exclude: '../../src/BaseBundle/{Entity,Repository,Tests}'
 
-    # makes classes in src/AuthorBundle available to be used as services
+    # makes classes in src/UserBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    AuthorBundle\:
-        resource: '../../src/AuthorBundle/*'
+    UserBundle\:
+        resource: '../../src/UserBundle/*'
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
-        exclude: '../../src/AuthorBundle/{Entity,Repository,Tests}'
+        exclude: '../../src/UserBundle/{Entity,Repository,Tests}'
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-    AuthorBundle\Controller\:
-        resource: '../../src/AuthorBundle/Controller'
-        public: true
-        tags: ['controller.service_arguments']
-
-    # makes classes in src/ArticleBundle available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
-    ArticleBundle\:
-        resource: '../../src/ArticleBundle/*'
-        # you can exclude directories or files
-        # but if a service is unused, it's removed anyway
-        exclude: '../../src/ArticleBundle/{Entity,Repository,Tests}'
-
-    # controllers are imported separately to make sure they're public
-    # and have a tag that allows actions to type-hint services
-    ArticleBundle\Controller\:
-        resource: '../../src/ArticleBundle/Controller'
+    UserBundle\Controller\:
+        resource: '../../src/UserBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
 

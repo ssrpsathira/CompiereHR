@@ -28,8 +28,6 @@ class AppKernel extends Kernel
 
             // CompiereHR bundles
             new BaseBundle\BaseBundle(),
-            new AuthorBundle\AuthorBundle(),
-            new ArticleBundle\ArticleBundle(),
             new UserBundle\UserBundle()
         ];
 

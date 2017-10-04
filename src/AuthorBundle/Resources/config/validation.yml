@@ -1,5 +1,0 @@
-AuthorBundle\Entity\Author:
-    properties:
-        name:
-            - NotBlank: { message: Author name can not be empty }
-            - Length: { max: 255, maxMessage: Authr name is too long }

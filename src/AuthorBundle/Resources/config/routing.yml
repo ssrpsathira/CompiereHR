@@ -1,4 +1,0 @@
-author_add:
-    path: /authors
-    defaults: { _controller: AuthorBundle:Author:add }
-    methods: [POST]
