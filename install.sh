@@ -18,6 +18,7 @@ php bin/console server:start 0.0.0.0:8000
 # php bin/console doctrine:database:create
 # php bin/console doctrine:schema:update --force
 php composer.phar install
+php bin/console doctrine:migrations:migrate
 
 # Setup backup db location
 # cd /opt
