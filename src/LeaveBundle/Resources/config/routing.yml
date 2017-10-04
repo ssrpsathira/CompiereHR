@@ -1,0 +1,4 @@
+leave_list:
+    path: /leave
+    defaults: { _controller: LeaveBundle:Leave:list }
+    methods: [GET]
