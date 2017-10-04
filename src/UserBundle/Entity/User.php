@@ -2,15 +2,17 @@
 
 namespace UserBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
+
 /**
  * User
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
 
     /**

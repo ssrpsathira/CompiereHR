@@ -1,7 +1,7 @@
 UserBundle\Entity\User:
     type: entity
     repositoryClass: UserBundle\Entity\Repository\UserRepository
-    table: user_hr
+    table: compiereUser
     id:
         id:
             type: integer
