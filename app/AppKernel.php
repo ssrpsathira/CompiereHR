@@ -28,7 +28,8 @@ class AppKernel extends Kernel
 
             // CompiereHR bundles
             new BaseBundle\BaseBundle(),
-            new UserBundle\UserBundle()
+            new UserBundle\UserBundle(),
+            new LeaveBundle\LeaveBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
