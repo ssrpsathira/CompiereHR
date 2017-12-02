@@ -6,7 +6,7 @@
 # sudo apt-get update
 # sudo apt-get remove php5-common -y
 # sudo apt-get purge php5-common -y
-# sudo apt-get install php7.0 php7.0-fpm php7.0-mysql php7.0-xml -y
+#sudo apt-get install php7.1 php7.1-fpm php7.1-mysql php7.1-xml -y
 
 # Install MySQL
 # sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password password'
