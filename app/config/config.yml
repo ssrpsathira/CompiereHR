@@ -61,7 +61,7 @@ doctrine:
 swiftmailer:
     transport: '%mailer_transport%'
     host: '%mailer_host%'
-    username: '%mailer_user%'
+    username: '%mailer_address%'
     password: '%mailer_password%'
     spool: { type: memory }
 
@@ -76,8 +76,11 @@ fos_user:
     firewall_name: user
     user_class: UserBundle\Entity\User
     from_email:
-        address: "%mailer_user%"
-        sender_name: "%mailer_user%"
+        address: "%mailer_address%"
+        sender_name: "%mailer_name%"
+    registration:
+        confirmation:
+            enabled: true
 
 doctrine_migrations:
     dir_name: "%kernel.root_dir%/DoctrineMigrations"

@@ -7,6 +7,7 @@ parameters:
     database_password: password
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: ssrpsathira@gmail.com
+    mailer_address: noreply@compierehr.com
+    mailer_name: CompiereHR
     mailer_password: null
     secret: 1e93de90cfbd54c4e7b1b2708e84ea45882e3f68
