@@ -1,6 +1,10 @@
 security:
     encoders:
-        FOS\UserBundle\Model\UserInterface: bcrypt
+        FOS\UserBundle\Model\UserInterface: sha512
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            encode_as_base64: false
+            iterations: 4
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
@@ -15,8 +19,15 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        user:
-            pattern: ^/users
+        user_registration:
+            pattern: ^/users/register
             anonymous: true
             stateless: true
             logout: true
+
+        basic_access:
+            anonymous: false
+            stateless: true
+            http_basic: ~
+            logout: true
+            provider: fos_userbundle
