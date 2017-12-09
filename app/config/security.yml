@@ -19,8 +19,8 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        user_registration:
-            pattern: ^/users/register
+        user:
+            pattern: ^/users/
             anonymous: true
             stateless: true
             logout: true
