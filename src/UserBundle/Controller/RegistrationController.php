@@ -46,4 +46,17 @@ class RegistrationController extends BaseUserController
 
         return $this->setBaseHeaders($response);
     }
+
+    /**
+     * Receive the confirmation token from user email provider, login the user.
+     *
+     * @param Request $request
+     * @param string  $token
+     *
+     * @return Response
+     */
+    public function confirmAction(Request $request, $token)
+    {
+        return parent::confirmAction($request, $token);
+    }
 }

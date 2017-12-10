@@ -1,3 +1,8 @@
+fos_user_registration_confirm:
+    path: /users/confirm/{token}
+    defaults: { _controller: UserBundle:Registration:confirm }
+    methods: [GET]
+
 user_register:
     path: /users/register
     defaults: { _controller: UserBundle:Registration:register }
