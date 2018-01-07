@@ -11,6 +11,8 @@ security:
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
+        api_key_user_provider:
+            id: AppBundle\Security\ApiKeyUserProvider
         fos_userbundle:
             id: fos_user.user_provider.username
 
@@ -25,9 +27,12 @@ security:
             stateless: true
             logout: true
 
-        basic_access:
+        api:
+            pattern: ^/
             anonymous: false
             stateless: true
-            http_basic: ~
-            logout: true
-            provider: fos_userbundle
+            simple_preauth:
+                authenticator: AppBundle\Security\ApiKeyAuthenticator
+                provider: api_key_user_provider
+            http_basic:
+                provider: fos_userbundle

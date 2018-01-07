@@ -1,0 +1,20 @@
+UserBundle\Entity\ApiKey:
+    type: entity
+    repositoryClass: UserBundle\Entity\Repository\ApiKeyRepository
+    table: apiKey
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        key:
+            type: string
+            length: 20
+    manyToOne:
+        user:
+            targetEntity: UserBundle\Entity\User
+            inversedBy: apiKeys
+            joinColumn:
+                name: userId
+                referencedColumnName: id

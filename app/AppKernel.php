@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
 
             // CompiereHR bundles
+            new AppBundle\AppBundle(),
             new BaseBundle\BaseBundle(),
             new UserBundle\UserBundle(),
             new LeaveBundle\LeaveBundle()

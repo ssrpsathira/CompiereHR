@@ -7,3 +7,8 @@ UserBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    oneToMany:
+        apiKeys:
+            targetEntity: UserBundle\Entity\ApiKey
+            mappedBy: user
+            cascade: ["all"]
