@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Install Apache
+# added 'ServerName 127.0.0.1' to the bottom of /etc/apache2/apache2.conf
+# sudo apt-get update
+# sudo apt-get install apache2 -y
+
 # Install PHP
 # sudo apt-get install python-software-properties software-properties-common
 # sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
@@ -15,8 +20,8 @@
 
 # Setup app environment
 php bin/console server:start 0.0.0.0:8000
-# php bin/console doctrine:database:create
-# php bin/console doctrine:schema:update --force
+# sudo systemctl restart apache2
+php bin/console doctrine:database:create --if-not-exists
 php composer.phar install
 php bin/console doctrine:migrations:migrate
 
